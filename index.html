@@ -14,7 +14,9 @@
 </head>
 <body>
 <div class="container">
-  <div class="weather-app">
+  <div class="weather-app-wrapper">
+    <div class="weather-app">
+      <div class="overview">
    <h1>
     London, UK
    </h1>  
@@ -26,10 +28,19 @@
       Cloudy
     </li>
    </ul>
+      </div>
   <div class="row">
     <div class="col-6">
-      <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="Cloudy">
-      8°C | °F
+      <div class="d-flex weather-temperature">
+      <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" 
+           alt="Cloudy" 
+           id="main-icon"
+      />
+    <div class="float-left">
+      <strong> 8 </strong>
+      <span class="units">°C | <a href="#">°F</a></span>
+    </div>
+      </div>
     </div>
       <div class="col-6">
         <ul>
@@ -44,12 +55,12 @@
           </li>
         </ul>
     </div>
-  
   </div>
-  <smaal>
-    <a href="https://github.com/Jenn-Torres/Vanilla-Weather-app" target="_blank">Open-source code</a>
-    by Jennifer Torres
-  </smaal>
+</div>
+<smaal>
+  <a href="https://github.com/Jenn-Torres/Vanilla-Weather-app" target="_blank">Open-source code</a>
+  by Jennifer Torres
+</smaal>
 </div>
 </div>
  <script src="src/app.js"></script>
