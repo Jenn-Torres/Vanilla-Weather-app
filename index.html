@@ -9,6 +9,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css">
     <title>Weather App</title>
 </head>
@@ -17,14 +18,12 @@
   <div class="weather-app-wrapper">
     <div class="weather-app">
       <div class="overview">
-   <h1>
-    London, UK
-   </h1>  
+   <h1 id="city"></h1>  
    <ul>
     <li>
      Wednesday 11:00
     </li>
-    <li>
+    <li id="description">
       Cloudy
     </li>
    </ul>
@@ -37,7 +36,7 @@
            id="main-icon"
       />
     <div class="float-left">
-      <strong> 8 </strong>
+      <strong id="temperature"></strong>
       <span class="units">°C | <a href="#">°F</a></span>
     </div>
       </div>
@@ -45,13 +44,10 @@
       <div class="col-6">
         <ul>
           <li>
-            Precipitation: 2%
+            Humidity: <span id="humidity"></span>
           </li>
           <li>
-            Humidity: 89%
-          </li>
-          <li>
-            wind: 2 mph
+            wind: <span id="wind"></span> Km/h
           </li>
         </ul>
     </div>
