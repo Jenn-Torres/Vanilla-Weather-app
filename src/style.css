@@ -38,6 +38,7 @@ ul {
     rgba(34, 193, 195, 1) 21%,
     rgba(253, 187, 45, 1) 100%
   );
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .weather-app-wrapper {
   max-width: 600px;
