@@ -58,11 +58,42 @@ function search(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  let cityImputElement = document.querySelector("#city-input");
-  search(cityImputElement.value);
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
 }
 
 search("London");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+// Degrees Conversion
+let currentTempFahrenheit = false;
+
+function convertToCelsius() {
+  if (currentTempFahrenheit == false) {
+    return;
+  }
+
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemp = temperatureElement.innerHTML;
+  temperatureElement.innerHTML = Math.round(((fahrenheitTemp - 32) * 5) / 9);
+  currentTempFahrenheit = false;
+}
+
+function convertToFahrenheit() {
+  if (currentTempFahrenheit) {
+    return;
+  }
+
+  let temperatureElement = document.querySelector("#temperature");
+  let celsiusTemp = temperatureElement.innerHTML;
+  temperatureElement.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+  currentTempFahrenheit = true;
+}
+
+let celsiusTemp = document.querySelector("#celsius");
+celsiusTemp.addEventListener("click", convertToCelsius);
+
+let fahrenheitTemp = document.querySelector("#fahrenheit");
+fahrenheitTemp.addEventListener("click", convertToFahrenheit);
