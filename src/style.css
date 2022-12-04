@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-  color: #878787;
+  color: white;
   font-size: 22px;
   font-weight: 100;
   line-height: 28px;
@@ -12,7 +12,7 @@ h1 {
 
 li {
   list-style: none;
-  color: rgb(135, 135, 135);
+  color: white;
   font-size: 14px;
   font-weight: 100;
   line-height: 20px;
@@ -32,7 +32,12 @@ ul {
 .weather-app {
   padding: 20px;
   border: 1px solid #dadde3;
-  border-radius: 5px;
+  border-radius: 10px;
+  background: linear-gradient(
+    25deg,
+    rgba(34, 193, 195, 1) 21%,
+    rgba(253, 187, 45, 1) 100%
+  );
 }
 .weather-app-wrapper {
   max-width: 600px;
@@ -50,7 +55,7 @@ ul {
 }
 
 .weather-temperature strong {
-  color: rgb(33, 33, 33);
+  color: white;
   font-size: 54px;
   line-height: 1;
   font-weight: 400;
