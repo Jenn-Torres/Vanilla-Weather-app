@@ -23,6 +23,34 @@ function formatDate(timesTamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Thu", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="forecast-date">${day}</div>
+          <img
+          src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
+          alt=""
+          width="42"
+          />
+        <div class="forecast-temperature">
+          <span class="temperature-max">18°</span>
+          <span class="temperature-min">12°</span>
+        </div>
+    </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -63,6 +91,7 @@ function handleSubmit(event) {
 }
 
 search("London");
+displayForecast();
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
