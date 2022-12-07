@@ -51,8 +51,8 @@ ul {
 
 .weather-temperature img {
   margin-right: 5px;
-  height: 64px;
-  width: 64px;
+  height: 65px;
+  width: 65px;
 }
 
 .weather-temperature strong {
@@ -67,4 +67,22 @@ ul {
   font-size: 16px;
   top: -25px;
   margin-right: 8px;
+}
+
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.forecast-temperature {
+  font-size: 15px;
+}
+
+.temperature-min {
+  opacity: 0.6;
 }
