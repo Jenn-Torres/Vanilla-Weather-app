@@ -31,7 +31,6 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
@@ -71,8 +70,47 @@ function displayForecast(response) {
 
 function showForecast(coordinates) {
   let apiKey = "a33b693cfbefd271b0ed075f9a8f65f0";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units-metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
+}
+
+function changeWeatherBackground(weatherDescription) {
+  let container = document.querySelector("#weather-app-container");
+  switch (weatherDescription) {
+    case "Clear":
+      container.style.background =
+        "linear-gradient(24deg, rgba(62,226,228,1) 21%, rgba(39,149,226,1) 79%)";
+      break;
+
+    case "Clouds":
+      container.style.background =
+        "linear-gradient(186deg, rgba(158,169,170,1) 30%, rgba(182,199,211,1) 50%, rgba(81,113,170,1) 80%)";
+      break;
+
+    case "Snow":
+      container.style.background =
+        "linear-gradient(139deg, rgba(185,193,200,1) 17%, rgba(239,240,242,1) 78%)";
+      break;
+
+    case "Rain":
+      container.style.background =
+        "linear-gradient(35deg, rgba(60,169,172,1) 7%, rgba(29,182,253,1) 42%, rgba(99,117,226,1) 71%)";
+      break;
+
+    case "Drizzle":
+      container.style.background =
+        "linear-gradient(35deg, rgba(60,172,169,1) 19%, rgba(29,182,253,1) 51%, rgba(30,143,187,1) 79%)";
+      break;
+
+    case "Thunderstorm":
+      container.style.background =
+        "linear-gradient(circle, rgba(238,174,202,1) 0%, rgba(31,64,145,1) 81%)";
+      break;
+
+    default:
+      container.style.background =
+        "linear-gradient(25deg, rgba(34, 193, 195, 1) 21%,rgba(253, 187, 45, 1) 100%)";
+  }
 }
 
 function displayTemperature(response) {
@@ -102,6 +140,9 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   showForecast(response.data.coord);
+
+  let weatherDescription = response.data.weather[0].main;
+  changeWeatherBackground(weatherDescription);
 }
 
 function search(city) {
@@ -120,34 +161,3 @@ search("London");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-// Degrees Conversion
-let currentTempFahrenheit = false;
-
-function convertToCelsius() {
-  if (currentTempFahrenheit == false) {
-    return;
-  }
-
-  let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemp = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round(((fahrenheitTemp - 32) * 5) / 9);
-  currentTempFahrenheit = false;
-}
-
-function convertToFahrenheit() {
-  if (currentTempFahrenheit) {
-    return;
-  }
-
-  let temperatureElement = document.querySelector("#temperature");
-  let celsiusTemp = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-  currentTempFahrenheit = true;
-}
-
-let celsiusTemp = document.querySelector("#celsius");
-celsiusTemp.addEventListener("click", convertToCelsius);
-
-let fahrenheitTemp = document.querySelector("#fahrenheit");
-fahrenheitTemp.addEventListener("click", convertToFahrenheit);
